@@ -43,14 +43,12 @@ var config = {
 };
 
 module.exports = (env, argv) => {
-  console.info("MODE:",argv.mode)
-  if (argv.mode === "development") {
-    config.devtool = "inline-source-map";
-  }
+  console.info("MODE:", argv.mode);
 
   if (argv.mode === "production") {
     config.devtool = "source-map";
+  } else {
+    config.devtool = "inline-source-map";
   }
-
   return config;
 };
