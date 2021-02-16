@@ -2,13 +2,12 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const port = process.env.PORT || 3000;
 
-module.exports = {
+var config = {
   mode: "development",
   entry: "./src/index.js",
   output: {
     filename: "bundle.[fullhash].js",
   },
-  devtool: "inline-source-map",
   module: {
     rules: [
       {
@@ -41,4 +40,21 @@ module.exports = {
     historyApiFallback: true,
     open: true,
   },
+};
+var config = {
+  entry: "./app.js",
+  //...
+};
+
+module.exports = (env, argv) => {
+  console.info("MODE:",env.NODE_ENV)
+  if (argv.mode === "development") {
+    config.devtool = "inline-source-map";
+  }
+
+  if (argv.mode === "production") {
+    config.devtool = "source-map";
+  }
+
+  return config;
 };
