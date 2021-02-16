@@ -1,11 +1,11 @@
 {
   "name": "goibiba",
   "version": "1.0.0",
-  "description": "",
+  "description": "Clone of Goibibo",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve",
+    "start": "webpack --mode=development serve",
     "build": "webpack --mode=production --progress"
   },
   "author": "anush",
@@ -32,6 +32,7 @@
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
     "babel-loader": "^8.2.2",
+    "copy-webpack-plugin": "^7.0.0",
     "css-loader": "^5.0.1",
     "html-webpack-plugin": "^4.5.0",
     "style-loader": "^2.0.0",

@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const port = process.env.PORT || 3000;
 
@@ -32,6 +33,12 @@ var config = {
     new HtmlWebpackPlugin({
       template: "public/index.html",
       favicon: "public/favicon.ico",
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: "public/*.jpg", to: "" },
+        { from: "public/*.png", to: "" },
+      ],
     }),
   ],
   devServer: {
