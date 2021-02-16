@@ -5,7 +5,7 @@ import { ErrorMessage, useFormik } from "formik";
 import * as Yup from "yup";
 import DatePicker from "react-datepicker";
 import AsyncSelect from "react-select/async";
-import Axios from "axios";
+import flightPlacesAPI from "../apis/flightPlacesAPI";
 import Lodash from "lodash";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -23,10 +23,7 @@ const initialValues = {
 };
 const loadPlaces = (loc) =>
   new Promise((resolve) => {
-    let url =
-      "https://voyager.goibibo.com/api/v1/flights_search/find_node_by_name_v2/?limit=10&search_query=" +
-      loc;
-    Axios.get(url)
+    flightPlacesAPI.get(loc)
       .then((res) => {
         resolve(Lodash.cloneDeep(res.data.data.r));
       })
@@ -88,9 +85,6 @@ const FlightForm = () => {
               minDate={new Date()}
               value={formik.values.departureDate}
             />
-            <Form.Control.Feedback type="invalid">
-              {formik.errors.departureDate}
-            </Form.Control.Feedback>
           </Form.Group>
           <Form.Group as={Col}>
             <Form.Label>Travel class</Form.Label>
