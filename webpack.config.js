@@ -41,13 +41,9 @@ var config = {
     open: true,
   },
 };
-var config = {
-  entry: "./app.js",
-  //...
-};
 
 module.exports = (env, argv) => {
-  console.info("MODE:",env.NODE_ENV)
+  console.info("MODE:",argv.mode)
   if (argv.mode === "development") {
     config.devtool = "inline-source-map";
   }
