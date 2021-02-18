@@ -38,6 +38,7 @@ var config = {
       patterns: [
         { from: "public/*.jpg", to: "" },
         { from: "public/*.png", to: "" },
+        { from: "public/*.svg", to: "" },
       ],
     }),
   ],

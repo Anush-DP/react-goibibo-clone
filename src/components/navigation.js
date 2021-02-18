@@ -10,7 +10,7 @@ const Navigation = () => {
           <Navbar.Brand>
             <img
               style={{ margin: "0px 5px" }}
-              src="public/plane logo.jpg"
+              src="public/plane logo.svg"
               width="30"
               height="30"
               class="d-inline-block align-top"

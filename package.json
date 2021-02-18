@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --mode=development ",
-    "build": "webpack --mode=production --progress"
+    "build": "npm run clean && webpack --mode=production --progress",
+    "clean": "rm -rf ./dist/"
   },
   "author": "anush",
   "license": "MIT",
