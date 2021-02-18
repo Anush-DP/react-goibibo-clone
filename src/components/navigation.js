@@ -2,8 +2,6 @@ import React from "react";
 import { Container, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-// import { pullRight, h1 } from './layout.css';
-
 const Navigation = () => {
   return (
     <Navbar bg="primary" variant="dark">
@@ -11,13 +9,14 @@ const Navigation = () => {
         <Link class="navbar-brand" to="/">
           <Navbar.Brand>
             <img
+              style={{ margin: "0px 5px" }}
               src="public/plane logo.jpg"
               width="30"
               height="30"
               class="d-inline-block align-top"
               alt=""
             />
-            Goibiba
+            <strong>Goibiba</strong>
           </Navbar.Brand>
         </Link>
       </Container>

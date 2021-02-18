@@ -23,14 +23,24 @@ const initialValues = {
 };
 const loadPlaces = (loc) =>
   new Promise((resolve) => {
-    flightPlacesAPI.get(loc)
-      .then((res) => {
-        resolve(Lodash.cloneDeep(res.data.data.r));
-      })
-      .catch((res) => {
-        console.log(res);
-        resolve([]);
-      });
+    if (process.env.NODE_ENV === "development") {
+      resolve([
+        { ct: { n: "a" } },
+        { ct: { n: "b" } },
+        { ct: { n: "c" } },
+        { ct: { n: "d" } },
+      ]);
+    } else {
+      flightPlacesAPI
+        .get(loc)
+        .then((res) => {
+          resolve(Lodash.cloneDeep(res.data.data.r));
+        })
+        .catch((res) => {
+          console.log(res);
+          resolve([]);
+        });
+    }
   });
 const FlightForm = () => {
   let history = useHistory();
