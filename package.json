@@ -14,9 +14,9 @@
   "dependencies": {
     "axios": "^0.21.1",
     "bootstrap": "^4.5.3",
+    "clone-deep": "^4.0.1",
     "express": "^4.17.1",
     "formik": "^2.2.6",
-    "lodash": "^4.17.20",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.0",

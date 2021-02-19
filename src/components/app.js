@@ -12,7 +12,7 @@ const App = () => {
       <Navigation />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/flights" component={Flight} />
+        <Route path="/flights/:slug" component={Flight} />
         <Route component={NoMatch} />
       </Switch>
     </Router>

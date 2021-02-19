@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import DatePicker from "react-datepicker";
 import AsyncSelect from "react-select/async";
 import flightPlacesAPI from "../apis/flightPlacesAPI";
-import Lodash from "lodash";
+import cloneDeep from "clone-deep";
 import "react-datepicker/dist/react-datepicker.css";
 
 const validationSchema = Yup.object({
@@ -18,35 +18,38 @@ const initialValues = {
   origin: "",
   destination: "",
   departureDate: null,
-  travelClass: "",
+  travelClass: "E",
   travellers: 1,
 };
 const loadPlaces = (loc) =>
   new Promise((resolve) => {
-    if (process.env.NODE_ENV === "development") {
-      resolve([
-        { ct: { n: "a" } },
-        { ct: { n: "b" } },
-        { ct: { n: "c" } },
-        { ct: { n: "d" } },
-      ]);
-    } else {
-      flightPlacesAPI
-        .get(loc)
-        .then((res) => {
-          resolve(Lodash.cloneDeep(res.data.data.r));
-        })
-        .catch((res) => {
-          console.log(res);
-          resolve([]);
-        });
-    }
+    flightPlacesAPI
+      .get(loc)
+      .then((res) => {
+        resolve(cloneDeep(res.data.data.r));
+      })
+      .catch((res) => {
+        resolve([]);
+      });
   });
 const FlightForm = () => {
   let history = useHistory();
   const onSubmit = (values) => {
-    alert(JSON.stringify(values, null, 2));
-    history.push("/flights");
+    let val =
+      values.origin.iata +
+      "-" +
+      values.destination.iata +
+      "-" +
+      values.departureDate
+        .toISOString()
+        .split("T")[0]
+        .split("-")
+        .reduce((a, i) => a + i) +
+      "-" +
+      values.travellers +
+      "-" +
+      values.travelClass;
+    history.push("/flights/" + val);
   };
   const formik = useFormik({
     initialValues: initialValues,
@@ -101,14 +104,14 @@ const FlightForm = () => {
             <Form.Control
               custom="true"
               as="select"
-              defaultValue="Choose..."
               id="travelClass"
               name="travelClass"
               {...formik.getFieldProps("travelClass")}
             >
-              <option>Economy</option>
-              <option>Business</option>
-              <option>First Class</option>
+              <option value="E">Economy</option>
+              <option value="B">Business</option>
+              <option value="F">First Class</option>
+              <option value="W">Premium Economy</option>
             </Form.Control>
           </Form.Group>
           <Form.Group as={Col}>
