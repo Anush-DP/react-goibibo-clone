@@ -1,10 +1,10 @@
-import React from "react";
-import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
+import React from 'react';
+import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 
-import Home from "./home/home";
-import Flights from "./flights/flights";
-import NoMatch from "./no-match";
-import Navigation from "./navigation";
+import Home from './home/home';
+import Flights from './flights/flights';
+import NoMatch from './no-match';
+import Navigation from './navigation';
 
 const App = () => {
   return (

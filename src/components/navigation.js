@@ -1,6 +1,6 @@
-import React from "react";
-import { Container, Navbar } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Container, Navbar } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Navigation = () => {
   return (
@@ -9,7 +9,7 @@ const Navigation = () => {
         <Link class="navbar-brand" to="/">
           <Navbar.Brand>
             <img
-              style={{ margin: "0px 5px" }}
+              style={{ margin: '0px 5px' }}
               src="public/plane logo.svg"
               width="30"
               height="30"

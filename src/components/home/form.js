@@ -1,24 +1,24 @@
-import React from "react";
-import { Col, Form, Button } from "react-bootstrap";
-import { Redirect, useHistory } from "react-router-dom";
-import { ErrorMessage, useFormik } from "formik";
-import * as Yup from "yup";
-import DatePicker from "react-datepicker";
-import AsyncSelect from "react-select/async";
-import flightPlacesAPI from "../apis/flightPlacesAPI";
-import cloneDeep from "clone-deep";
-import "react-datepicker/dist/react-datepicker.css";
+import React from 'react';
+import { Col, Form, Button } from 'react-bootstrap';
+import { Redirect, useHistory } from 'react-router-dom';
+import { ErrorMessage, useFormik } from 'formik';
+import * as Yup from 'yup';
+import DatePicker from 'react-datepicker';
+import AsyncSelect from 'react-select/async';
+import flightPlacesAPI from '../apis/flightPlacesAPI';
+import cloneDeep from 'clone-deep';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const validationSchema = Yup.object({
-  origin: Yup.object().required("Required"),
-  destination: Yup.object().required("Required"),
-  departureDate: Yup.string().required("Required").nullable(),
+  origin: Yup.object().required('Required'),
+  destination: Yup.object().required('Required'),
+  departureDate: Yup.string().required('Required').nullable(),
 });
 const initialValues = {
-  origin: "",
-  destination: "",
+  origin: '',
+  destination: '',
   departureDate: null,
-  travelClass: "E",
+  travelClass: 'E',
   travellers: 1,
 };
 const loadPlaces = (loc) =>
@@ -37,19 +37,19 @@ const FlightForm = () => {
   const onSubmit = (values) => {
     let val =
       values.origin.iata +
-      "-" +
+      '-' +
       values.destination.iata +
-      "-" +
+      '-' +
       values.departureDate
         .toISOString()
-        .split("T")[0]
-        .split("-")
+        .split('T')[0]
+        .split('-')
         .reduce((a, i) => a + i) +
-      "-" +
+      '-' +
       values.travellers +
-      "-" +
+      '-' +
       values.travelClass;
-    history.push("/flights/" + val);
+    history.push('/flights/' + val);
   };
   const formik = useFormik({
     initialValues: initialValues,
@@ -70,7 +70,7 @@ const FlightForm = () => {
               getOptionValue={(i) => i.ct.n}
               id="origin"
               name="origin"
-              onChange={(data) => formik.setFieldValue("origin", data)}
+              onChange={(data) => formik.setFieldValue('origin', data)}
             />
           </Form.Group>
           <Form.Group as={Col}>
@@ -82,7 +82,7 @@ const FlightForm = () => {
               getOptionValue={(i) => i.ct.n}
               id="destination"
               name="destination"
-              onChange={(data) => formik.setFieldValue("destination", data)}
+              onChange={(data) => formik.setFieldValue('destination', data)}
             />
           </Form.Group>
           <Form.Group as={Col}>
@@ -93,7 +93,7 @@ const FlightForm = () => {
               selected={formik.values.departureDate}
               id="departureDate"
               name="departureDate"
-              onChange={(val) => formik.setFieldValue("departureDate", val)}
+              onChange={(val) => formik.setFieldValue('departureDate', val)}
               onBlur={formik.handleBlur}
               minDate={new Date()}
               value={formik.values.departureDate}
@@ -106,7 +106,7 @@ const FlightForm = () => {
               as="select"
               id="travelClass"
               name="travelClass"
-              {...formik.getFieldProps("travelClass")}
+              {...formik.getFieldProps('travelClass')}
             >
               <option value="E">Economy</option>
               <option value="B">Business</option>
@@ -122,7 +122,7 @@ const FlightForm = () => {
               max="9"
               id="travellers"
               name="travellers"
-              {...formik.getFieldProps("travellers")}
+              {...formik.getFieldProps('travellers')}
             />
           </Form.Group>
         </Form.Row>

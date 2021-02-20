@@ -1,7 +1,7 @@
-import React from "react";
-import { Container, Jumbotron } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import FlightForm from "./form";
+import React from 'react';
+import { Container, Jumbotron } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import FlightForm from './form';
 
 const Home = () => {
   return (
