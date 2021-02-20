@@ -1,6 +1,8 @@
 import Axios from "axios";
 
+export const flightLogoURL =
+  "https://goibibo.ibcdn.com/images/v2/carrierImages/";
+
 export default Axios.create({
-  baseURL:
-    "https://imgak.mmtcdn.com/flights/assets/media/dt/common/icons/",
+  baseURL: flightLogoURL,
 });

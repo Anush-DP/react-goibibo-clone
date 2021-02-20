@@ -133,7 +133,7 @@ const FlightForm = () => {
           type="submit"
           disabled={!formik.isValid}
         >
-          Submit
+          Search
         </Button>
       </Form>
     </>
