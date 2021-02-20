@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Navbar } from 'react-bootstrap';
+import { Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const Navigation = () => {
@@ -19,6 +19,9 @@ const Navigation = () => {
             <strong>Goibiba</strong>
           </Navbar.Brand>
         </Link>
+        <Nav className="justify-content-end">
+          <Nav.Link href="#sc">{`<Source code />`}</Nav.Link>
+        </Nav>
       </Container>
     </Navbar>
   );

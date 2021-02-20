@@ -74,7 +74,7 @@ const Flight = () => {
                 {` ${i.flightName.n} - ${i.flightName.id}`}
               </Card.Header>
               <Card.Body>
-                <Table responsive size="sm">
+                <Table responsive borderless size="sm">
                   <tbody>
                     <tr>
                       <td>{i.origin.t}</td>
