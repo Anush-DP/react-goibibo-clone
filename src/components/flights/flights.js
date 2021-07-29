@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, Container, Spinner, Table } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import flightsAPI from '../apis/flightsAPI';
@@ -8,7 +8,7 @@ import { findFlightNameByKey, findPlaceNameByIata } from './helpers';
 
 const Flight = () => {
   let [data, setData] = useState([]);
-  let [done, setDone] = useState(false);
+  let [loading, setLoading] = useState(false);
   const params = useParams().slug.split('-');
   const url =
     'air-' +
@@ -21,7 +21,7 @@ const Flight = () => {
     params[3] +
     '-0-0-' +
     params[4];
-  if (!done)
+  useEffect(() => {
     flightsAPI
       .get('[{%22query%22:%22' + url + '-100--%22}]')
       .then((res) => {
@@ -43,11 +43,13 @@ const Flight = () => {
         });
         console.log(_data);
         setData(_data);
-        setDone(true);
+        setLoading(true);
       })
       .catch((e) => {
         console.log(e);
       });
+  }, []);
+
   // new Promise(resolve => {
   //   setTimeout(() => resolve(),2000);
   // }).then(r=>{setDone(true)});
@@ -58,7 +60,7 @@ const Flight = () => {
           <h1>Flights Available</h1>
         </center>
         <br />
-        {!done ? (
+        {!loading ? (
           <center>
             Loading <Spinner animation="border" variant="primary" />
           </center>
