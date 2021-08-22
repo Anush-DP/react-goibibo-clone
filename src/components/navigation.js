@@ -20,7 +20,7 @@ const Navigation = () => {
           </Navbar.Brand>
         </Link>
         <Nav className="justify-content-end">
-          <Nav.Link href="#sc">{`<Source code />`}</Nav.Link>
+          <Nav.Link href="https://github.com/Anush-DP/react-goibibo-clone">{`<Source code />`}</Nav.Link>
         </Nav>
       </Container>
     </Navbar>
